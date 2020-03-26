@@ -13,7 +13,10 @@ public enum Application {
         .numeros("Perso","+33668168768")
         .build();
 
-    //Ajouter informations pour le test du
+    //Ajouter informations pour le test du Composite
+    PersonnelComposite group = new PersonnelComposite();
+    group.add(P);
+    group.informations();
   }
 
   public static void main(String [] args){
