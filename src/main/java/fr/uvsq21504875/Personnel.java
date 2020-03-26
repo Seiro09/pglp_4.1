@@ -2,8 +2,9 @@ package fr.uvsq21504875;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 
-public class Personnel {
+public class Personnel implements Personne{
   private final String nom;
   private final String prenom;;
   private final LocalDateTime date;
@@ -29,6 +30,10 @@ public class Personnel {
       this.numeros.put(key,numero);
       return this;
     }
+
+    public Personnel build(){
+      return new Personnel(this);
+    }
   }
 
   private Personnel(Builder builder){
@@ -40,4 +45,16 @@ public class Personnel {
     fonctions=builder.fonctions;
   }
 
+  @Override
+  public void informations(){
+    System.out.println("[Nom : " +  this.nom);
+    System.out.println(" Prenom : " +  this.prenom);
+    System.out.println(" Date : " +  this.date);
+    System.out.println(" Fonctions : " +  this.fonctions);
+    for (Map.Entry<String,String> e : numeros.entrySet()){
+      System.out.println("Numero "+ e.getKey() + " : " + e.getValue());
+    }
+
+
+  }
 }
