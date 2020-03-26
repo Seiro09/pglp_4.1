@@ -4,9 +4,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class PersonnelTest {
+public class PersonnelCompositeTest {
   @Test
   public void informations() throws Exception {
+  }
+
+  @Test
+  public void add() throws Exception {
+  }
+
+  @Test
+  public void remove() throws Exception {
   }
 
 }
