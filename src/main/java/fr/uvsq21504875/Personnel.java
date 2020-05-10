@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Personnel implements Personne{
   private final String nom;
-  private final String prenom;;
+  private final String prenom;
   private final LocalDateTime date;
   private final HashMap<String,String> numeros;
   private final String fonctions;
