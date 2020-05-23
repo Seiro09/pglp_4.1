@@ -4,57 +4,110 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Personnel implements Personne{
+public class Personnel implements Personne {
+  /**
+   * Nom du Personnel.
+   */
   private final String nom;
+  /**
+   * Prénom du personnel.
+   */
   private final String prenom;
+  /**
+   * Date de naissance du Personnel.
+   */
   private final LocalDateTime date;
-  private final HashMap<String,String> numeros;
+  /**
+   * Numéros de téléphone du Personnel.
+   */
+  private final HashMap<String, String> numeros;
+  /**
+   * Fonctions du Personnel.
+   */
   private final String fonctions;
 
-  public static class Builder{
+  public static class Builder {
+    /**
+     * Nom du Personnel du Builder.
+     */
     private final String nom;
+    /**
+     * Prénom du Personnel du Builder.
+     */
     private final String prenom;
+    /**
+     * Date de naissance du Personnel du Builder.
+     */
     private final LocalDateTime date;
+    /**
+     * Fonctions du Personnel du Builder.
+     */
     private final String fonctions;
 
-    private HashMap<String,String> numeros = new HashMap<>();
+    /**
+     * Numéros du Personnel du Builder.
+     */
+    private final HashMap<String, String> numeros = new HashMap<>();
 
-    public Builder(String nom, String prenom, LocalDateTime date, String fonctions){
-      this.nom=nom;
-      this.prenom=prenom;
-      this.date=date;
-      this.fonctions=fonctions;
+    /**
+     * Création du Personnel à partir du pattern Builder.
+     *
+     * @param nom Nom du Personnel.
+     * @param prenom Prénom du Personnel.
+     * @param date Date de naissance du Personnel.
+     * @param fonctions Fonctions du Personnel.
+     */
+    public Builder(final String nom, final String prenom,
+                   final LocalDateTime date, final String fonctions) {
+      this.nom = nom;
+      this.prenom = prenom;
+      this.date = date;
+      this.fonctions = fonctions;
     }
 
-    public Builder numeros(String key,String numero){
-      this.numeros.put(key,numero);
+    /**
+     * Fonction optionnelle d'ajout de numéro.
+     *
+     * @param key Le type de numéro.
+     * @param numero Le numéro.
+     * @return Le builder avec le numéro ajouté.
+     */
+    public Builder numeros(final String key, final String numero) {
+      this.numeros.put(key, numero);
       return this;
     }
 
-    public Personnel build(){
+    /**
+     * Fonction de cration d'un Personnel à partir d'un Builder.
+     *
+     * @return Le Personnel créé.
+     */
+    public Personnel build() {
       return new Personnel(this);
     }
   }
 
-  private Personnel(Builder builder){
+  protected Personnel(final Builder builder) {
     nom = builder.nom;
     prenom = builder.prenom;
 
-    date=builder.date;
-    numeros=builder.numeros;
-    fonctions=builder.fonctions;
+    date = builder.date;
+    numeros = builder.numeros;
+    fonctions = builder.fonctions;
   }
 
+  /**
+   * Fonction d'affichage des informations du Personnel.
+   */
   @Override
-  public void informations(){
+  public void informations() {
     System.out.println("[Nom : " +  this.nom);
     System.out.println(" Prenom : " +  this.prenom);
     System.out.println(" Date : " +  this.date);
     System.out.println(" Fonctions : " +  this.fonctions);
-    for (Map.Entry<String,String> e : numeros.entrySet()){
-      System.out.println("Numero "+ e.getKey() + " : " + e.getValue());
+    for (Map.Entry<String, String> e : numeros.entrySet()) {
+      System.out.println("Numero " + e.getKey() + " : " + e.getValue());
     }
-
-
+    System.out.println("]");
   }
 }
